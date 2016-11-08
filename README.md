@@ -14,7 +14,7 @@ Then use new to create an empty PriorityQueue:
 var queue = new PriorityQueue();
 ```
 
-Currently supports insert, pop, and peek and has a length property:
+Currently supports insert, pop, peek, and has a length property:
 ```
 var queue.insert(12, 'foo');
 console.log(queue.length); // prints 1
