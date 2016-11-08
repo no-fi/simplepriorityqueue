@@ -45,7 +45,18 @@ describe('Simple Priority Queue', function () {
       pq.insert(-1, 'value -1');
       expect(pq.peek()).to.equal('value -1');
     });
-
+    it('should support inserting multiple objects with the same key', function () {
+      for (var i = 0; i < 10; i++) {
+        expect(pq).to.have.property('length', i);
+        pq.insert(10, 'value 10');
+      }
+      expect(pq).to.have.property('length', 10);
+      for (var i = 10; i > 0; i--) {
+        expect(pq).to.have.property('length', i);
+        expect(pq.pop()).to.equal('value 10');
+      }
+      expect(pq).to.have.property('length', 0);
+    });
   });
   describe('peek', function () {
     it('should be a method', function () {
