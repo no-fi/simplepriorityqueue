@@ -59,7 +59,41 @@ describe("Simple Priority Queue", function () {
   });
   describe("pop", function () {
     it("should be a method", function () {
-
+      expect(pq.pop).to.be.a('function');
+    });
+    it("should return undefined if PriorityQueue is empty", function () {
+      expect(pq.pop()).to.equal(undefined);
+    });
+    it("should remove the top element of the PriorityQueue", function () {
+      // Build up PriorityQueue
+      pq.insert(10, 'value 10');
+      expect(pq.peek()).to.equal('value 10');
+      pq.insert(12, 'value 12');
+      expect(pq.peek()).to.equal('value 10');
+      pq.insert(5, 'value 5');
+      expect(pq.peek()).to.equal('value 5');
+      pq.insert(3, 'value 3');
+      expect(pq.peek()).to.equal('value 3');
+      pq.insert(22, 'value 22');
+      expect(pq.peek()).to.equal('value 3');
+      pq.insert(-1, 'value -1');
+      expect(pq.peek()).to.equal('value -1');
+      // Test pops now
+      expect(pq).to.have.property('length', 6);
+      expect(pq.pop()).to.equal('value -1');
+      expect(pq).to.have.property('length', 5);
+      expect(pq.pop()).to.equal('value 3');
+      expect(pq).to.have.property('length', 4);
+      expect(pq.pop()).to.equal('value 5');
+      expect(pq).to.have.property('length', 3);
+      expect(pq.pop()).to.equal('value 10');
+      expect(pq).to.have.property('length', 2);
+      expect(pq.pop()).to.equal('value 12');
+      expect(pq).to.have.property('length', 1);
+      expect(pq.pop()).to.equal('value 22');
+      expect(pq).to.have.property('length', 0);
+      expect(pq.pop()).to.equal(undefined);
+      expect(pq).to.have.property('length', 0);
     });
   });
 });
