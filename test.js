@@ -29,9 +29,37 @@ describe("Simple Priority Queue", function () {
     it("should be a method", function () {
       expect(pq.insert).to.be.a('function');
     });
-    xit("should insert a new key and value", function () {
-
+    it("should insert a new key and value and maintain proper order", function () {
+      pq.insert(10, 'value 10');
+      expect(pq.peek()).to.equal('value 10');
+      pq.insert(12, 'value 12');
+      expect(pq.peek()).to.equal('value 10');
+      pq.insert(5, 'value 5');
+      expect(pq.peek()).to.equal('value 5');
+      pq.insert(3, 'value 3');
+      expect(pq.peek()).to.equal('value 3');
+      pq.insert(22, 'value 22');
+      expect(pq.peek()).to.equal('value 3');
+      pq.insert(-1, 'value -1');
+      expect(pq.peek()).to.equal('value -1');
     });
 
+  });
+  describe("peek", function () {
+    it("should be a method", function () {
+      expect(pq.peek).to.be.a('function');
+    });
+    it("should return undefined if PriorityQueue is empty", function () {
+      expect(pq.peek()).to.equal(undefined);
+    });
+    it("should return the top element", function () {
+      pq.insert(12, 'foo');
+      expect(pq.peek()).to.equal('foo');
+    });
+  });
+  describe("pop", function () {
+    it("should be a method", function () {
+
+    });
   });
 });
