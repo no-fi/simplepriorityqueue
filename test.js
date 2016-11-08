@@ -1,22 +1,24 @@
 var expect = require('chai').expect;
 var PriorityQueue = require('./index.js');
 
-describe("Simple Priority Queue", function () {
+describe('Simple Priority Queue', function () {
   var pq;
   beforeEach(function () {
     pq = new PriorityQueue();
   });
-  it("Should be constructed with new keyword", function () {
-    expect(new PriorityQueue()).to.be.an('object');
+  describe('constructor', function () {
+    it('Should be constructed with new keyword', function () {
+      expect(new PriorityQueue()).to.be.an('object');
+    });
   });
-  describe("length", function () {
-    it("should be a numeric property", function () {
+  describe('length', function () {
+    it('should be a numeric property', function () {
       expect(pq).to.have.property('length')
     });
-    it("should be the number 0 for an empty PriorityQueue", function () {
+    it('should be the number 0 for an empty PriorityQueue', function () {
       expect(pq).to.have.property('length', 0);
     });
-    it("should update when elements are inserted", function () {
+    it('should update when elements are inserted', function () {
       pq.insert(12, 'foo');
       expect(pq).to.have.property('length', 1);
       pq.insert(1, 'bar');
@@ -25,11 +27,11 @@ describe("Simple Priority Queue", function () {
       expect(pq).to.have.property('length', 4);
     });
   });
-  describe("insert", function () {
-    it("should be a method", function () {
+  describe('insert', function () {
+    it('should be a method', function () {
       expect(pq.insert).to.be.a('function');
     });
-    it("should insert a new key and value and maintain proper order", function () {
+    it('should insert a new key and value and maintain proper order', function () {
       pq.insert(10, 'value 10');
       expect(pq.peek()).to.equal('value 10');
       pq.insert(12, 'value 12');
@@ -45,26 +47,26 @@ describe("Simple Priority Queue", function () {
     });
 
   });
-  describe("peek", function () {
-    it("should be a method", function () {
+  describe('peek', function () {
+    it('should be a method', function () {
       expect(pq.peek).to.be.a('function');
     });
-    it("should return undefined if PriorityQueue is empty", function () {
+    it('should return undefined if PriorityQueue is empty', function () {
       expect(pq.peek()).to.equal(undefined);
     });
-    it("should return the top element", function () {
+    it('should return the top element', function () {
       pq.insert(12, 'foo');
       expect(pq.peek()).to.equal('foo');
     });
   });
-  describe("pop", function () {
-    it("should be a method", function () {
+  describe('pop', function () {
+    it('should be a method', function () {
       expect(pq.pop).to.be.a('function');
     });
-    it("should return undefined if PriorityQueue is empty", function () {
+    it('should return undefined if PriorityQueue is empty', function () {
       expect(pq.pop()).to.equal(undefined);
     });
-    it("should remove the top element of the PriorityQueue", function () {
+    it('should remove the top element of the PriorityQueue', function () {
       // Build up PriorityQueue
       pq.insert(10, 'value 10');
       expect(pq.peek()).to.equal('value 10');
